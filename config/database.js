@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 const dbConfig = {
-  master: 'mongodb://localhost:27017/master',
-  school1: 'mongodb://localhost:27017/school1',
-  school2: 'mongodb://localhost:27017/school2',
+  master: process.env.MASTER_DB,
+  school1: process.env.SCHOOL1_DB,
+  school2: process.env.SCHOOL2_DB,
 };
 
 const connections = {};
