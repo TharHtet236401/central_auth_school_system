@@ -7,8 +7,11 @@ app.use(express.json());
 
 
 import authRoute from "./routes/auth.route.js";
+import studentRoute from "./routes/student.route.js";
 
 app.use("/api/auth", authRoute);
+app.use("/api/students", studentRoute);
+
 
 
 
