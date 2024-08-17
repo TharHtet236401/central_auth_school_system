@@ -46,6 +46,8 @@ export const signup = async (req, res) => {
 
   await new centralUser(toSave).save();
   await new User(toSave).save();
+
+  res.status(201).json({ message: "User created successfully", toSave });
 };
 
 export const login = async (req, res) => {
@@ -68,7 +70,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    user 
+    user;
     const token = genToken(user);
 
     const foundUser = {
@@ -89,7 +91,7 @@ export const login = async (req, res) => {
 };
 
 // // Helper function to connect to the central database and get the model
-// just testing the function 
+// just testing the function
 // const getCentralUserModel = async () => {
 //     const centralDB = await connectToDatabase("master");
 //     return centralDB.model('centralUser', centralUsersSchema);
