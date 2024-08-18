@@ -8,10 +8,12 @@ app.use(express.json());
 import authRoute from "./routes/auth.route.js";
 import studentRoute from "./routes/student.route.js";
 import classRoute from "./routes/class.route.js";
+import schoolRoute from "./routes/school.route.js";
 
 app.use("/api/auth", authRoute);
 app.use("/api/students", studentRoute);
 app.use("/api/classes", classRoute);
+app.use("/api/schools", schoolRoute);
 
 app.use("/*", (req, res) => {
   res.status(404).send("Route Not Found");
