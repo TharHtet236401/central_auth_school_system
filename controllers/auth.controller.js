@@ -61,7 +61,7 @@ export const login = async (req, res) => {
 
     // Find the user in the central database
     const centralDB = await connectToDatabase("master");
-    const centralUser = CentralUser;
+    const centralUser = centralDB.model("centralUser", centralUserSchema);
 
     const user = await centralUser.findOne({ email });
 
