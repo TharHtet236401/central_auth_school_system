@@ -7,10 +7,11 @@ export const createClass = async (req, res) => {
   try {
     const school = req.user.school;
     const userDB = await connectToDatabase(school);
-    const { name, classCode } = req.body;
+    const { grade, className, classCode } = req.body;
 
     const savedClass = {
-      name,
+      grade,
+      className,
       classCode,
       school: req.user.school,
     };
