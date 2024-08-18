@@ -1,6 +1,7 @@
-import userSchema from "../models/centralUsers.model.js";
+import userSchema from "../models/users.model.js";
 import connectToDatabase from "../config/database.js";
-import centralUsersSchema from "../models/users.model.js";
+import centralUserSchema from "../models/centralUsers.model.js";
+import classSchema from "../models/class.model.js";
 
 import { genToken } from "../utils/libby.js";
 
@@ -40,9 +41,13 @@ export const signup = async (req, res) => {
 
   const userDB = await connectToDatabase(school);
   const User = userDB.model("User", userSchema);
+  const Classes = userDB.model("Classes", classSchema);
+
+  const classes = await Classes.find();
+  console.log(classes);
 
   const centralDB = await connectToDatabase("master");
-  const centralUser = centralDB.model("centralUser", centralUsersSchema);
+  const centralUser = centralDB.model("centralUser", centralUserSchema);
 
   await new centralUser(toSave).save();
   await new User(toSave).save();
@@ -56,7 +61,7 @@ export const login = async (req, res) => {
 
     // Find the user in the central database
     const centralDB = await connectToDatabase("master");
-    const centralUser = centralDB.model("centralUser", centralUsersSchema);
+    const centralUser = CentralUser;
 
     const user = await centralUser.findOne({ email });
 

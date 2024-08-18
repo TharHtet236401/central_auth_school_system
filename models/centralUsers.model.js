@@ -8,4 +8,6 @@ const centralUserSchema = new mongoose.Schema({
   role: { type: String, enum: ["admin", "teacher", "parent"], required: true },
 });
 
+
 export default centralUserSchema;
+
